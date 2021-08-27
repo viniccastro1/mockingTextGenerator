@@ -1,0 +1,76 @@
+*{
+    
+}
+
+h1{
+    color: white;
+    font-size: 4em;
+}
+
+.myContainer{
+    background: linear-gradient(135deg, #FBF1BE, #E98E7A);
+}
+
+.skips{
+    width: 3em;
+    height: 1.5em;
+    text-align: center;
+
+    border-radius: 8px;
+
+    border: none;
+    overflow: auto;
+    outline: none;
+}
+
+.button{
+    height: 3em;
+    width: 9em;
+    border-radius: 12px;
+    background-color: #0C0C0C;
+    color: white;
+}
+
+.header{
+    
+    background-color: #0C0C0C;
+}
+
+.form{
+    border-radius: 12px;
+    width: 45em;
+    background: linear-gradient(135deg, #F2DD6E, #CB614A);
+    padding-left: 3em;
+    padding-right: 3em;
+    font-weight: bold;
+    color: black;
+}
+
+.textarea{
+    resize: none;
+    
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+
+    width: 100%;
+    border-radius: 12px;
+
+    border: none;
+    overflow: auto;
+    outline: none;
+
+    text-indent: 1em;
+    
+}
+
+
+.title{
+    font-size: 2em;
+}
+
+footer{
+    background-color: #0C0C0C;
+    color: white;
+    font-size: 1em;
+    
+}
