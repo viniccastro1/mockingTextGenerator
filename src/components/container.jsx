@@ -18,7 +18,7 @@ class Container extends React.Component {
                 </div>
 
                 <div class='row'>
-                    <div class='col p-0'><Footer/></div>
+                    {/*<div class='col p-0'><Footer/></div>*/}
                 </div>
             </div>
         </React.Fragment>

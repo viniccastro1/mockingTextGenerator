@@ -8,16 +8,15 @@ class Form extends React.Component {
     render() {
         return (
                 <form class='form d-flex flex-column justify-content-center'>
-                    <div class='row'>
+                    
                         <div class="form-group">
-                            <label for="text" class='title d-flex justify-content-center'>Cole o texto aqui!</label>
-                            <textarea class="textarea form-control" id="text" rows="3"></textarea>
-                            
+                            <div class='row'><label for="text" class='title d-flex justify-content-center'>Cole o texto aqui!</label></div>
+                            <div class='textAreaRow row'><textarea class="textarea form-control" id="text" rows="3"></textarea></div>
                         </div>
-                    </div>
+                    
                     
                     <div class='row'>
-                        <div class='col-sm a'>
+                        <div class='col-sm-4 a'>
                             <div class='row'>
                                 <div class='col d-flex justify-content-end'> 
                                     <label>Intervalo:</label>
@@ -46,8 +45,8 @@ class Form extends React.Component {
                             </div>
 
                         </div>
-
-                        <div class='col-sm d-inline-flex justify-content-end'> 
+                        
+                        <div class='submitDiv col-sm'> 
                             <button type="submit" class="button btn">GERAR</button>
                         </div>
 

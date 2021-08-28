@@ -1,14 +1,17 @@
-*{
-    
-}
 
 h1{
     color: white;
-    font-size: 4em;
+    font-size: 6em;
 }
+
+.contentRow{
+    height: 100vh;
+}
+
 
 .myContainer{
     background: linear-gradient(135deg, #FBF1BE, #E98E7A);
+    height: 100vh;
 }
 
 .skips{
@@ -23,16 +26,8 @@ h1{
     outline: none;
 }
 
-.button{
-    height: 3em;
-    width: 9em;
-    border-radius: 12px;
-    background-color: #0C0C0C;
-    color: white;
-}
-
 .header{
-    
+    text-align: center;
     background-color: #0C0C0C;
 }
 
@@ -40,10 +35,29 @@ h1{
     border-radius: 12px;
     width: 45em;
     background: linear-gradient(135deg, #F2DD6E, #CB614A);
-    padding-left: 3em;
-    padding-right: 3em;
+    padding-left: 4em;
+    padding-right: 4em;
     font-weight: bold;
     color: black;
+    height: 90%;
+}
+
+.submitDiv{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.button{
+    height: 3em;
+    width: 9em;
+    border-radius: 12px;
+    background-color: #0C0C0C;
+    color: white;
+    
+}
+
+.textAreaRow{
+    height: 40vh;
 }
 
 .textarea{
@@ -52,7 +66,6 @@ h1{
     margin-top: 1em;
     margin-bottom: 0.5em;
 
-    width: 100%;
     border-radius: 12px;
 
     border: none;
@@ -74,3 +87,40 @@ footer{
     font-size: 1em;
     
 }
+
+@media screen and (max-width: 600px) {
+    h1{
+        font-size: 2em;
+    }
+
+    .header{
+        height: 15vh;
+    }
+
+    .form{
+        height: auto;
+    }
+
+    .textAreaRow{
+        height: 50vh;
+    }
+
+    .submitDiv{
+        justify-content: center;
+    }
+
+    .form{
+        padding-left:2em;
+        padding-right:2em;
+    }
+
+    .title{
+        font-size: 1.5em;
+    }
+
+    .button{
+        align-self: center;
+    }
+
+
+  }
