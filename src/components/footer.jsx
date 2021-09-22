@@ -5,7 +5,6 @@ class Footer extends React.Component {
   render() {
     return (
       <footer class='footer d-flex justify-content-center'>
-        <p>I'm a footer!</p>
       </footer>
         
     )

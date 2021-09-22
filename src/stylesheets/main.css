@@ -1,17 +1,19 @@
-
 h1{
     color: white;
     font-size: 6em;
 }
 
-.contentRow{
-    height: 100vh;
-}
-
-
 .myContainer{
     background: linear-gradient(135deg, #FBF1BE, #E98E7A);
-    height: 100vh;
+}
+
+.breakLine{
+    word-wrap: break-word;
+}
+
+.contentRow{
+    display: flex;
+    justify-content: center;
 }
 
 .skips{
@@ -31,6 +33,10 @@ h1{
     background-color: #0C0C0C;
 }
 
+.formCol{
+    height: 83vh;
+}
+
 .form{
     border-radius: 12px;
     width: 45em;
@@ -48,10 +54,10 @@ h1{
 }
 
 .button{
+    font-size: 1em;
     height: 3em;
     width: 9em;
     border-radius: 12px;
-    background-color: #0C0C0C;
     color: white;
     
 }
@@ -70,12 +76,8 @@ h1{
 
     border: none;
     overflow: auto;
-    outline: none;
-
-    text-indent: 1em;
-    
+    outline: none;    
 }
-
 
 .title{
     font-size: 2em;
@@ -85,10 +87,12 @@ footer{
     background-color: #0C0C0C;
     color: white;
     font-size: 1em;
+    height: 4vh;
     
 }
 
 @media screen and (max-width: 600px) {
+
     h1{
         font-size: 2em;
     }
@@ -97,9 +101,6 @@ footer{
         height: 15vh;
     }
 
-    .form{
-        height: auto;
-    }
 
     .textAreaRow{
         height: 50vh;
@@ -124,3 +125,9 @@ footer{
 
 
   }
+
+  @media screen and (max-width: 340px) {
+    .title{
+        font-size: 1.2em;
+    }
+}

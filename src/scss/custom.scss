@@ -1,0 +1,21 @@
+// Required
+@import "./node_modules/bootstrap/scss/functions";
+
+// Default variable overrides
+$primary: #0C0C0C;
+$modal-content-border-radius: 12px;
+//$modal-content-bg: black;
+$btn-border-radius: 12px;
+
+// Required
+@import "./node_modules/bootstrap/scss/variables";
+@import "./node_modules/bootstrap/scss/mixins";
+
+// Optional Bootstrap components here
+@import "./node_modules/bootstrap/scss/root";
+@import "./node_modules/bootstrap/scss/reboot";
+@import "./node_modules/bootstrap/scss/type";
+@import "./node_modules/bootstrap/scss/buttons";
+@import "./node_modules/bootstrap/scss/modal";
+@import "./node_modules/bootstrap/scss/forms";
+// etc
