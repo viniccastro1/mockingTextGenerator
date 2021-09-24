@@ -7,33 +7,64 @@ class Form extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            inputTxt: '',
+            iptString: '',
+            optString: '',
+            skips: 0,
+            fCase: true
         }
 
     }
 
+    handleTextAreaChange = (event) => {
+        this.setState({iptString: event.target.value});
+    }
 
-    handleChange = (event) =>{
-        this.setState({inputTxt: event.target.value});
+    handleSkipsChange = (event) => {
+        this.setState({skips: event.target.value});
+    }
+
+    handleRadioChange = (event) => {
+        this.setState({skips: event.target.value});
     }
     
     handleSubmit = (e) =>{
         e.preventDefault();
-        this.setState({inputTxt: this.state.inputTxt});        
+
+        let skips = this.state.skips;
+        let fCase = this.state.fCase;
+
+        let iptString = this.state.iptString;
+        let optString = '';
+
+        function upperOrLower(char, timesLooped){
+            if (timesLooped % skips === 0) fCase = !fCase;
+
+            if (fCase === true) return char.toUpperCase();
+            if (fCase === false) return char.toLowerCase();
+        }
+
+        for (let i=0; i < iptString.length; i++){
+            optString += upperOrLower(iptString[i], i);
+        }
+
+        this.setState({optString: optString})    
+
+        console.log(!this.state.fCase)
     }
-    
+
+
 
     render() {
         return (
             <React.Fragment>
 
-            <Modal textContent={this.state.inputTxt}/>
-            
+            <Modal textContent={this.state.optString}/>
+
             <form class='form d-flex flex-column justify-content-center' onSubmit={this.handleSubmit}>
             
             <label for="text" class='title d-flex justify-content-center'>Cole o texto aqui!</label>
             <div class='textAreaRow row'>
-                <textarea class="textarea form-control" id="text" rows="3" name={this.state.inputTxt} onChange={this.handleChange}/>
+                <textarea class="textarea form-control" id="text" rows="3" name={this.state.iptString} onChange={this.handleTextAreaChange}/>
             </div>
 
             
@@ -43,8 +74,8 @@ class Form extends React.Component {
                         <div class='col d-flex justify-content-end'> 
                             <label>Intervalo:</label>
                         </div>
-                        <div class='col'>
-                            <input class="skips form-control" id='skips' type="text" placeholder="" value='1'/>
+                        <div class='col' onChange={this.handleSkipsChange}>
+                            <input class="skips form-control" id='skips' type="text" placeholder=""/>
                         </div>
                     </div>
 
@@ -54,15 +85,15 @@ class Form extends React.Component {
                             <label for='upperLower'>Início:</label>
                         </div>
 
-                        <div class='col'>
+                        <div class='col' onChange={this.handleRadioChange}>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="upperOrLower" id="upper" value="upper"checked></input>
-                                <label class="form-check-label" for="upper"> M </label>
+                                <input class="form-check-input" type="radio" name="fCase" id="true" value="true"></input>
+                                <label class="form-check-label" for="true"> M </label>
                             </div>
 
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="upperOrLower" id="lower" value="lower" checked></input>
-                                <label class="form-check-label" for="lower"> m </label>
+                                <input class="form-check-input" type="radio" name="fCase" id="false" value="false"></input>
+                                <label class="form-check-label" for="false"> m </label>
                             </div>
                         </div>
                         

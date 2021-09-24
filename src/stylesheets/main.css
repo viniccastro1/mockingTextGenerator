@@ -51,6 +51,7 @@ h1{
 .submitDiv{
     display: flex;
     flex-direction: row-reverse;
+    padding-right: 0;
 }
 
 .button{
