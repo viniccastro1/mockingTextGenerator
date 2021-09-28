@@ -1,18 +1,35 @@
 import React from 'react';
 import ReactDOM, { render } from 'react-dom';
-import Modal from './modal'
+import Modal from './modal';
+import Error from './error';
 
 class Form extends React.Component {
 
     constructor(props) {
+
         super(props);
         this.state = {
             iptString: '',
             optString: '',
-            skips: 0,
-            fCase: true
+            skips: '1',
+            fCase: '',
         }
 
+    }
+
+    showError = () => {
+        let errorDiv = document.getElementById('errorDiv');
+        ReactDOM.render(<Error/>, errorDiv);
+    }
+
+    copyToClipboard = () => {
+        var copyText = this.state.optString;
+        navigator.clipboard.writeText(copyText);
+    }
+
+    componentDidMount(){
+        let fCaseCheck = document.getElementsByName('fCase');
+        fCaseCheck[0].checked = true;
     }
 
     handleTextAreaChange = (event) => {
@@ -24,45 +41,53 @@ class Form extends React.Component {
     }
 
     handleRadioChange = (event) => {
-        this.setState({skips: event.target.value});
+        if (event.target.value === 'true') this.setState({fCase: true});
+        else if (event.target.value === 'false') this.setState({fCase: false});
     }
     
     handleSubmit = (e) =>{
         e.preventDefault();
 
-        let skips = this.state.skips;
-        let fCase = this.state.fCase;
-
-        let iptString = this.state.iptString;
-        let optString = '';
-
-        function upperOrLower(char, timesLooped){
-            if (timesLooped % skips === 0) fCase = !fCase;
-
-            if (fCase === true) return char.toUpperCase();
-            if (fCase === false) return char.toLowerCase();
+        if (2>1){
+            this.showError();
         }
+        else {
 
-        for (let i=0; i < iptString.length; i++){
-            optString += upperOrLower(iptString[i], i);
+            let skips = this.state.skips;
+            let fCase = this.state.fCase;
+
+            let iptString = this.state.iptString;
+            let optString = '';
+
+            function upperOrLower(char, timesLooped){
+                if (timesLooped % skips === 0) fCase = !fCase;
+
+                if (fCase === true) return char.toUpperCase();
+                if (fCase === false) return char.toLowerCase();
+            }
+
+            for (let i=0; i < iptString.length; i++){
+                optString += upperOrLower(iptString[i], i);
+            }
+
+            this.setState({optString: optString})    
         }
-
-        this.setState({optString: optString})    
-
-        console.log(!this.state.fCase)
     }
+
+
+
 
 
 
     render() {
         return (
-            <React.Fragment>
+        <React.Fragment>
 
-            <Modal textContent={this.state.optString}/>
+            <Modal textContent={this.state.optString} onCopyToClipboard={this.copyToClipboard}/>
 
             <form class='form d-flex flex-column justify-content-center' onSubmit={this.handleSubmit}>
             
-            <label for="text" class='title d-flex justify-content-center'>Cole o texto aqui!</label>
+            <label for="text" class='title d-flex justify-content-center'>Ironizador de Texto</label>
             <div class='textAreaRow row'>
                 <textarea class="textarea form-control" id="text" rows="3" name={this.state.iptString} onChange={this.handleTextAreaChange}/>
             </div>
@@ -75,7 +100,7 @@ class Form extends React.Component {
                             <label>Intervalo:</label>
                         </div>
                         <div class='col' onChange={this.handleSkipsChange}>
-                            <input class="skips form-control" id='skips' type="text" placeholder=""/>
+                            <input class="skips form-control" id='skips' value={this.state.skips} type="number" maxlength="2"/>
                         </div>
                     </div>
 
@@ -87,13 +112,13 @@ class Form extends React.Component {
 
                         <div class='col' onChange={this.handleRadioChange}>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="fCase" id="true" value="true"></input>
-                                <label class="form-check-label" for="true"> M </label>
+                                <input class="form-check-input" type="radio" name="fCase" id="trueRad" value="false"></input>
+                                <label class="form-check-label" for="trueRad"> M </label>
                             </div>
 
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="fCase" id="false" value="false"></input>
-                                <label class="form-check-label" for="false"> m </label>
+                                <input class="form-check-input" type="radio" name="fCase" id="falseRad" value="true"></input>
+                                <label class="form-check-label" for="falseRad"> m </label>
                             </div>
                         </div>
                         
@@ -102,14 +127,16 @@ class Form extends React.Component {
                 </div>
                 
                 <div class='submitDiv col-md'> 
-                    <button type="submit" class="button btn-primary"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">GERAR</button>
+                    <button type="submit" class="button btn-primary" id='submitButton' data-bs-toggle="modal" data-bs-target="#staticBackdrop">GERAR</button>
                 </div>
 
+                <div id='errorDiv'></div>
+                
             </div>
             </form>
-            </React.Fragment>
+        </React.Fragment>
         )
-  }
+   }
 }
 
 export default Form;
