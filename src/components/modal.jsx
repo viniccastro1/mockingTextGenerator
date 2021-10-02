@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM, { render } from 'react-dom';
 
 
-class Modal extends React.Component {    
+class MyModal extends React.Component {    
 
     render() {
 
         return (
         <React.Fragment>
-            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal fade" id="myModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
                 <div class="modal-header">
@@ -19,7 +19,7 @@ class Modal extends React.Component {
                     {this.props.textContent}
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onClick={this.props.onCopyToClipboard} id='generate'>Copiar</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onClick={this.props.handleCopyToClipboard} id='generate'>Copiar</button>
                 </div>
                 </div>
             </div>
@@ -29,4 +29,4 @@ class Modal extends React.Component {
     }
 }
 
-export default Modal;
+export default MyModal;
