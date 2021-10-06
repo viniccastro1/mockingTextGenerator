@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react';
 import ReactDOM, { render } from 'react-dom';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
-import MyModal from './modal';
 import Error from './error';
-import NewModal from './newmodal'
+import MyModal from './newmodal'
 
 
 class Form extends React.Component {
@@ -12,12 +11,14 @@ class Form extends React.Component {
         super(props);
         this.state = {
             showModal: false,
+            hideError: true,
 
             iptString: '',
             optString: '',
             skips: 1,
             fCase: '',
         }
+        
     }
 
     componentDidMount= () => {
@@ -40,8 +41,13 @@ class Form extends React.Component {
     }
 
 
-    showError = () => {
-        ReactDOM.render(<Error/>, document.getElementById('errorDiv'));
+    hideError = () => {
+        this.setState({hideError: true})
+    }
+
+    unhideError = () => {
+        this.setState({hideError: false})
+        console.log('Hey!')
     }
 
     copyToClipboard = () => {
@@ -62,7 +68,7 @@ class Form extends React.Component {
         const cond2 = this.state.skips === '';
 
         if (cond1 || cond2){
-            this.showError();
+            this.unhideError();
         }
 
         //Opens Modal
@@ -88,14 +94,14 @@ class Form extends React.Component {
         }
 
         this.setState({optString: optString})    
-        
     }
+    
 
     render() {
         return (
         <React.Fragment>
 
-            <NewModal show={this.state.showModal}
+            <MyModal show={this.state.showModal}
             onShowModal={this.handleSubmit}
             onCloseModal={this.handleCloseModal}
             textContent={this.state.optString}
@@ -145,7 +151,7 @@ class Form extends React.Component {
                     <button type="submit" class="button btn-primary" id='formInput' onClick={this.handleSubmit}>GERAR</button>
                 </div>
 
-                <div id='errorDiv'></div>
+                <div id='errorDiv'><Error hideThis={this.state.hideError} onClick={this.hideError}/></div>
                 
             </div>
             </form>

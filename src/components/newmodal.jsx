@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM, { render } from 'react-dom';
 import {Button, Modal} from 'react-bootstrap'
 
-function NewModal(props) {  
+function MyModal(props) {  
     return (
       <>  
         <Modal scrollable={true} show={props.show} onHide={props.onCloseModal}>
@@ -15,10 +15,10 @@ function NewModal(props) {
 
             <Modal.Footer>
                 <Button variant="secondary" onClick={props.onCloseModal}>
-                Close
+                Fechar
                 </Button>
                 <Button variant="primary" onClick={props.onCopyToClipboard}>
-                Save Changes
+                Copiar
                 </Button>
             </Modal.Footer>
 
@@ -29,4 +29,4 @@ function NewModal(props) {
   
 
 
-  export default NewModal;
+  export default MyModal;
